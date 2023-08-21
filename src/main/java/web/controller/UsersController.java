@@ -9,7 +9,6 @@ import web.service.UserService;
 import web.service.UserServiceImpl;
 
 @Controller
-@RequestMapping()
 public class UsersController {
     @Autowired
     private UserService userService;
