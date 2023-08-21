@@ -16,7 +16,6 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserDAO userDAO;
 
-    @Transactional
     @Override
     public List<User> allUsers() {
         return userDAO.allUsers();
@@ -40,7 +39,6 @@ public class UserServiceImpl implements UserService{
         userDAO.delete(id);
     }
 
-    @Transactional
     @Override
     public User getById(int id) {
         return userDAO.getById(id);

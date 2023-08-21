@@ -9,7 +9,7 @@ import web.service.UserService;
 import web.service.UserServiceImpl;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping()
 public class UsersController {
     @Autowired
     private UserService userService;
@@ -30,7 +30,7 @@ public class UsersController {
         return modelAndView;
     }
 
-    @GetMapping("/new")
+    @GetMapping("users/new")
     public ModelAndView addUser(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("new");
@@ -40,14 +40,14 @@ public class UsersController {
     @PostMapping
     public ModelAndView create(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/users");
+        modelAndView.setViewName("redirect:/");
 
         userService.add(user);
 
         return modelAndView;
     }
 
-    @GetMapping("/{id}/edit")
+    @GetMapping("users/{id}/edit")
     public ModelAndView editUser(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edit");
@@ -56,20 +56,20 @@ public class UsersController {
         return modelAndView;
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("users/{id}")
     public ModelAndView update(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/users");
+        modelAndView.setViewName("redirect:/");
 
         userService.edit(user);
 
         return modelAndView;
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("users/{id}")
     public ModelAndView delete(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/users");
+        modelAndView.setViewName("redirect:/");
 
         userService.delete(id);
 
